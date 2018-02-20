@@ -30,9 +30,41 @@ public class BankAccount {
         /*
          * Implement this function
          */
+        this.ownerName = name;
+        this.accountType = accountCategory;
     }
 
     /*
      * Implement getters and setters as appropriate for private variables.
      */
+
+    /**
+     *
+     * @param amount the amount to deposit;
+     * @return true if successful deposit
+     */
+    public boolean deposit(final double amount) {
+        if (amount <= 0) {
+            return false;
+        }
+        this.accountBalance += amount;
+        return true;
+    }
+
+    /**
+     *
+     * @param amount amount to withdraw
+     * @return true if successful withdraw
+     */
+    public boolean withdraw(final double amount) {
+        if (amount <= 0) {
+            return false;
+        }
+        if (accountBalance - amount < 0) {
+            return false;
+        }
+        accountBalance = accountBalance - amount;
+        return true;
+    }
+
 }
